@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="th" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software Developer Resume - Bilingual</title>
+    <title>ณัฐวุฒิ จีระโร - Software Developer Resume</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,16 +13,17 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'Sarabun', 'sans-serif'],
-                    },
+                    }
                 }
             }
         }
     </script>
-    <!-- Google Fonts: Inter and Sarabun for Thai support -->
+    <!-- Google Fonts: Inter & Sarabun -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap');
         body {
             font-family: 'Inter', 'Sarabun', sans-serif;
         }
@@ -33,90 +34,84 @@
             body {
                 background-color: white !important;
                 color: black !important;
-                padding: 0 !important;
             }
-            .resume-container {
+            .print-shadow-none {
                 box-shadow: none !important;
-                margin: 0 !important;
-                width: 100% !important;
-                max-width: 100% !important;
                 border: none !important;
-            }
-            .page-break {
-                page-break-before: always;
             }
         }
     </style>
 </head>
 <body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-300">
 
-    <!-- Control Toolbar (No Print) -->
-    <div class="no-print fixed top-4 right-4 z-50 flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md px-4 py-2.5 rounded-full shadow-lg border border-slate-200 dark:border-slate-700">
-        <!-- Language Switcher Toggle -->
-        <button id="lang-toggle" onclick="toggleLanguage()" class="text-xs font-semibold px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900 transition flex items-center gap-1.5">
-            <i class="fa-solid fa-globe"></i> <span id="lang-label">TH / EN</span>
+    <!-- Control Toolbar (Language, Theme, Print/PDF) -->
+    <div class="no-print fixed top-4 right-4 z-50 flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-2.5 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
+        <!-- Language Toggle -->
+        <button id="langToggle" onclick="toggleLanguage()" class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-globe text-indigo-500"></i>
+            <span id="langText">EN / TH</span>
         </button>
 
-        <div class="h-4 w-[1px] bg-slate-300 dark:bg-slate-700"></div>
-
-        <!-- Dark/Light Theme Toggle -->
-        <button onclick="toggleTheme()" class="w-9 h-9 flex items-center justify-center rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Toggle Theme">
-            <i id="theme-icon" class="fa-solid fa-moon"></i>
+        <!-- Dark/Light Mode Toggle -->
+        <button id="themeToggle" onclick="toggleTheme()" class="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition text-slate-700 dark:text-yellow-400">
+            <i id="themeIcon" class="fa-solid fa-moon"></i>
         </button>
 
-        <!-- Print / Save PDF Button -->
-        <button onclick="window.print()" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md transition transform active:scale-95">
-            <i class="fa-solid fa-print"></i> <span class="data-i18n" data-en="Print / PDF" data-th="พิมพ์ / บันทึก PDF">Print / PDF</span>
+        <!-- Print / Save PDF -->
+        <button onclick="window.print()" class="px-4 py-1.5 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white transition flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span data-en="Print / PDF" data-th="พิมพ์ / บันทึก PDF">Print / PDF</span>
         </button>
     </div>
 
     <!-- Main Resume Container -->
-    <main class="max-w-4xl mx-auto my-8 sm:my-12 resume-container bg-white dark:bg-slate-800 shadow-2xl rounded-2xl overflow-hidden border border-slate-200/60 dark:border-slate-700/60">
+    <main class="max-w-4xl mx-auto my-0 sm:my-8 bg-white dark:bg-slate-800 shadow-2xl sm:rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 print-shadow-none transition-colors duration-300">
         
-        <!-- Header Section -->
-        <header class="bg-gradient-to-r from-indigo-600 to-violet-700 dark:from-indigo-950 dark:to-slate-900 text-white p-8 sm:p-12 relative overflow-hidden">
-            <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
-            
-            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 relative z-10">
+        <!-- Header & Profile Section -->
+        <header class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-slate-800 text-white p-8 sm:p-12 relative overflow-hidden">
+            <!-- Decorative background circles -->
+            <div class="absolute -right-12 -top-12 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute right-1/3 -bottom-20 w-48 h-48 bg-indigo-400/20 rounded-full blur-xl pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col sm:flex-row items-center gap-6 sm:gap-8 text-center sm:text-left">
                 
-                <!-- Profile Image Slot -->
+                <!-- Profile Image Upload Box -->
                 <div class="relative group">
-                    <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border-4 border-white/20 shadow-xl bg-slate-700 flex items-center justify-center cursor-pointer relative">
-                        <img id="profile-img" src="https://placehold.co/300x300/4f46e5/ffffff?text=PHOTO" alt="Profile Picture" class="w-full h-full object-cover transition duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex flex-col items-center justify-center text-white text-xs font-medium no-print">
+                    <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border-4 border-white/30 shadow-xl bg-slate-700 flex items-center justify-center relative cursor-pointer">
+                        <img id="profileImg" src="https://placehold.co/400x400/4f46e5/ffffff?text=NJ" alt="Nattawut Jeeraro" class="w-full h-full object-cover">
+                        <!-- Upload Overlay -->
+                        <label for="imageUpload" class="no-print absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex flex-col items-center justify-center text-white text-xs font-medium cursor-pointer">
                             <i class="fa-solid fa-camera text-lg mb-1"></i>
-                            <span class="data-i18n" data-en="Change Photo" data-th="เปลี่ยนรูปภาพ">Change Photo</span>
-                        </div>
+                            <span data-en="Change Photo" data-th="เปลี่ยนรูปภาพ">Change Photo</span>
+                        </label>
+                        <input type="file" id="imageUpload" accept="image/*" class="hidden" onchange="previewImage(event)">
                     </div>
-                    <input type="file" id="img-upload" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer no-print" onchange="loadProfileImage(event)">
                 </div>
 
-                <!-- Personal Info -->
-                <div class="text-center sm:text-left flex-1">
-                    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-1">
-                        <span class="data-i18n" data-en="Alex Thanawat" data-th="จีระโร (ณัฐวุฒิ)">Nattawut Jeeraro</span>
-                    </h1>
-                    <p class="text-indigo-200 font-medium text-lg mb-4">
-                        <span class="data-i18n" data-en="Senior Full-Stack Software Developer" data-th="นักพัฒนาซอฟต์แวร์ฟูลสแต็กอาวุโส">Senior Full-Stack Software Developer</span>
-                    </p>
+                <!-- Personal Information -->
+                <div class="flex-1">
+                    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-1">ณัฐวุฒิ จีระโร</h1>
+                    <p class="text-indigo-200 text-lg sm:text-xl font-medium tracking-wide mb-4">Nattawut Jeeraro</p>
+                    <div class="inline-block bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-medium mb-4 border border-white/10">
+                        <span data-en="Software Developer & Full-Stack Engineer" data-th="นักพัฒนาซอฟต์แวร์ และฟูลสแต็กเอ็นจิเนียร์">Software Developer & Full-Stack Engineer</span>
+                    </div>
 
-                    <!-- Contact Details Grid -->
-                    <div class="flex flex-wrap justify-center sm:justify-start gap-y-2 gap-x-6 text-sm text-indigo-100/95">
-                        <a href="mailto:alex.dev@example.com" class="flex items-center gap-2 hover:text-white transition">
-                            <i class="fa-solid fa-envelope text-indigo-300"></i> alex.dev@example.com
+                    <!-- Contact Info Grid -->
+                    <div class="flex flex-wrap justify-center sm:justify-start gap-4 text-xs sm:text-sm text-indigo-100">
+                        <a href="mailto:nattawut.je@example.com" class="flex items-center gap-2 hover:text-white transition">
+                            <i class="fa-solid fa-envelope text-indigo-300"></i> nattawut.je@example.com
                         </a>
                         <a href="tel:+66812345678" class="flex items-center gap-2 hover:text-white transition">
                             <i class="fa-solid fa-phone text-indigo-300"></i> +66 81 234 5678
                         </a>
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-location-dot text-indigo-300"></i> 
-                            <span class="data-i18n" data-en="Bangkok, Thailand" data-th="กรุงเทพมหานคร, ประเทศไทย">Bangkok, Thailand</span>
-                        </div>
+                        <span class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-indigo-300"></i> Bangkok, Thailand
+                        </span>
                         <a href="https://github.com" target="_blank" class="flex items-center gap-2 hover:text-white transition">
-                            <i class="fa-brands fa-github text-indigo-300"></i> github.com/alexdev
+                            <i class="fa-brands fa-github text-indigo-300"></i> github.com/nattawut
                         </a>
                         <a href="https://linkedin.com" target="_blank" class="flex items-center gap-2 hover:text-white transition">
-                            <i class="fa-brands fa-linkedin text-indigo-300"></i> linkedin.com/in/alexdev
+                            <i class="fa-brands fa-linkedin text-indigo-300"></i> linkedin.com/in/nattawut
                         </a>
                     </div>
                 </div>
@@ -124,274 +119,242 @@
         </header>
 
         <!-- Content Body -->
-        <div class="p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
-            
-            <!-- Left Column (Skills & Languages & Education) -->
-            <div class="lg:col-span-1 space-y-8">
-                
-                <!-- Summary / About Me (Mobile friendly placement or sidebar snippet) -->
-                <section>
-                    <h2 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3 flex items-center gap-2 border-b-2 border-indigo-500 pb-2">
-                        <i class="fa-solid fa-user text-indigo-600 dark:text-indigo-400"></i>
-                        <span class="data-i18n" data-en="Profile Summary" data-th="ประวัติย่อ">Profile Summary</span>
-                    </h2>
-                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                        <span class="data-i18n" 
-                              data-en="Passionate Software Developer with 6+ years of experience designing and scaling high-performance web applications. Specialized in TypeScript, React, Node.js, and Cloud Infrastructure."
-                              data-th="นักพัฒนาซอฟต์แวร์ผู้มีประสบการณ์กว่า 6 ปีในการออกแบบและพัฒนาเว็บแอปพลิเคชันประสิทธิภาพสูง เชี่ยวชาญด้าน TypeScript, React, Node.js และระบบคลาวด์อินฟราโครงสร้าง">
-                            Passionate Software Developer with 6+ years of experience designing and scaling high-performance web applications. Specialized in TypeScript, React, Node.js, and Cloud Infrastructure.
-                        </span>
-                    </p>
-                </section>
+        <div class="p-8 sm:p-12 space-y-10">
 
-                <!-- Technical Skills -->
-                <section>
-                    <h2 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3 flex items-center gap-2 border-b-2 border-indigo-500 pb-2">
-                        <i class="fa-solid fa-code text-indigo-600 dark:text-indigo-400"></i>
-                        <span class="data-i18n" data-en="Technical Skills" data-th="ทักษะความสามารถ">Technical Skills</span>
-                    </h2>
-                    
-                    <div class="space-y-4 text-sm">
-                        <div>
-                            <span class="font-semibold text-slate-700 dark:text-slate-200 block mb-1.5">Frontend</span>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-300 px-2.5 py-1 rounded-md text-xs font-medium">React / Next.js</span>
-                                <span class="bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-300 px-2.5 py-1 rounded-md text-xs font-medium">TypeScript</span>
-                                <span class="bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-300 px-2.5 py-1 rounded-md text-xs font-medium">Tailwind CSS</span>
-                                <span class="bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-300 px-2.5 py-1 rounded-md text-xs font-medium">Vue.js</span>
-                            </div>
-                        </div>
+            <!-- Professional Summary -->
+            <section>
+                <h2 class="text-lg font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-3 flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 pb-2">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <span data-en="Professional Summary" data-th="บทสรุปผู้เชี่ยวชาญ">Professional Summary</span>
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base" data-en="Passionate and results-driven Software Developer with over 4 years of experience designing, developing, and deploying scalable web applications and cloud solutions. Proficient in modern JavaScript/TypeScript ecosystems, React, Node.js, and Python. Adept at collaborating in agile cross-functional teams to deliver high-performance user-centric software products." data-th="นักพัฒนาซอฟต์แวร์ที่มีความมุ่งมั่นและมีประสบการณ์มากกว่า 4 ปี ในการออกแบบ พัฒนา และปรับใช้เว็บแอปพลิเคชันและระบบคลาวด์ มีความเชี่ยวชาญในระบบนิเวศ JavaScript/TypeScript สมัยใหม่, React, Node.js และ Python พร้อมทักษะการทำงานร่วมกับทีมแบบ Agile เพื่อส่งมอบผลิตภัณฑ์ซอฟต์แวร์ที่มีประสิทธิภาพสูง">
+                    Passionate and results-driven Software Developer with over 4 years of experience designing, developing, and deploying scalable web applications and cloud solutions. Proficient in modern JavaScript/TypeScript ecosystems, React, Node.js, and Python. Adept at collaborating in agile cross-functional teams to deliver high-performance user-centric software products.
+                </p>
+            </section>
 
-                        <div>
-                            <span class="font-semibold text-slate-700 dark:text-slate-200 block mb-1.5">Backend</span>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-300 px-2.5 py-1 rounded-md text-xs font-medium">Node.js / Express</span>
-                                <span class="bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-300 px-2.5 py-1 rounded-md text-xs font-medium">Python / FastAPI</span>
-                                <span class="bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-300 px-2.5 py-1 rounded-md text-xs font-medium">GraphQL / REST API</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <span class="font-semibold text-slate-700 dark:text-slate-200 block mb-1.5">Database & DevOps</span>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-300 px-2.5 py-1 rounded-md text-xs font-medium">PostgreSQL / MongoDB</span>
-                                <span class="bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-300 px-2.5 py-1 rounded-md text-xs font-medium">Docker / Kubernetes</span>
-                                <span class="bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-300 px-2.5 py-1 rounded-md text-xs font-medium">AWS / CI/CD</span>
-                            </div>
+            <!-- Skills & Expertise -->
+            <section>
+                <h2 class="text-lg font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-4 flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 pb-2">
+                    <i class="fa-solid fa-code"></i>
+                    <span data-en="Technical Skills" data-th="ทักษะความสามารถทางเทคนิค">Technical Skills</span>
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <!-- Skill Group 1 -->
+                    <div class="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                        <h3 class="font-semibold text-sm text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
+                            <i class="fa-solid fa-laptop-code"></i> <span data-en="Frontend Development" data-th="การพัฒนาส่วนหน้า (Frontend)">Frontend Development</span>
+                        </h3>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">React.js</span>
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">Next.js</span>
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">TypeScript</span>
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">Tailwind CSS</span>
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">HTML5 / CSS3</span>
                         </div>
                     </div>
-                </section>
+                    <!-- Skill Group 2 -->
+                    <div class="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                        <h3 class="font-semibold text-sm text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
+                            <i class="fa-solid fa-server"></i> <span data-en="Backend & Database" data-th="ระบบหลังบ้านและฐานข้อมูล">Backend & Database</span>
+                        </h3>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">Node.js</span>
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">Express.js</span>
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">Python (FastAPI)</span>
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">PostgreSQL</span>
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">MongoDB</span>
+                        </div>
+                    </div>
+                    <!-- Skill Group 3 -->
+                    <div class="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                        <h3 class="font-semibold text-sm text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
+                            <i class="fa-solid fa-cloud"></i> <span data-en="DevOps & Tools" data-th="เครื่องมือและเดฟออปส์">DevOps & Tools</span>
+                        </h3>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">Docker</span>
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">AWS (EC2, S3)</span>
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">Git / GitHub</span>
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">CI/CD Pipelines</span>
+                            <span class="px-2.5 py-1 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">Agile / Scrum</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                <!-- Education -->
-                <section>
-                    <h2 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3 flex items-center gap-2 border-b-2 border-indigo-500 pb-2">
-                        <i class="fa-solid fa-graduation-cap text-indigo-600 dark:text-indigo-400"></i>
-                        <span class="data-i18n" data-en="Education" data-th="การศึกษา">Education</span>
-                    </h2>
-                    <div class="space-y-3 text-sm">
-                        <div>
-                            <h3 class="font-bold text-slate-800 dark:text-slate-100">
-                                <span class="data-i18n" data-en="B.Sc. in Computer Science" data-th="วิทยาศาสตรบัณฑิต สาขาวิทยาการคอมพิวเตอร์">B.Sc. in Computer Science</span>
+            <!-- Work Experience -->
+            <section>
+                <h2 class="text-lg font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-6 flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 pb-2">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span data-en="Work Experience" data-th="ประสบการณ์ทำงาน">Work Experience</span>
+                </h2>
+                <div class="space-y-8">
+                    <!-- Job 1 -->
+                    <div class="relative pl-6 border-l-2 border-indigo-500">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-indigo-500 border-4 border-white dark:border-slate-800"></div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                            <h3 class="text-base font-bold text-slate-900 dark:text-slate-100">
+                                <span data-en="Senior Software Developer" data-th="นักพัฒนาซอฟต์แวร์อาวุโส">Senior Software Developer</span>
                             </h3>
-                            <p class="text-indigo-600 dark:text-indigo-400 font-medium text-xs">
-                                <span class="data-i18n" data-en="Chulalongkorn University (2016 - 2020)" data-th="จุฬาลงกรณ์มหาวิทยาลัย (พ.ศ. 2559 - 2563)">Chulalongkorn University (2016 - 2020)</span>
-                            </p>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">
-                                <span class="data-i18n" data-en="First Class Honors, GPA 3.75" data-th="เกียรตินิยมอันดับ 1, เกรดเฉลี่ย 3.75">First Class Honors, GPA 3.75</span>
-                            </p>
+                            <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 rounded-full w-fit mt-1 sm:mt-0">2023 - <span data-en="Present" data-th="ปัจจุบัน">Present</span></span>
                         </div>
+                        <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3">TechInnovate Solutions Co., Ltd. • Bangkok</p>
+                        <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1.5 leading-relaxed">
+                            <li data-en="Led development of cloud-native microservices using Node.js, TypeScript, and Docker, reducing API response time by 35%." data-th="นำทีมพัฒนาไมโครเซอร์วิสบนคลาวด์ด้วย Node.js, TypeScript และ Docker ส่งผลให้เวลาตอบสนองของ API ลดลง 35%">Led development of cloud-native microservices using Node.js, TypeScript, and Docker, reducing API response time by 35%.</li>
+                            <li data-en="Architected responsive front-end dashboard applications with React.js and Tailwind CSS serving over 50,000 active daily users." data-th="ออกแบบสถาปัตยกรรมแดชบอร์ดส่วนหน้าแบบเรสพอนซิฟด้วย React.js และ Tailwind CSS รองรับผู้ใช้งานประจำกว่า 50,000 คนต่อวัน">Architected responsive front-end dashboard applications with React.js and Tailwind CSS serving over 50,000 active daily users.</li>
+                            <li data-en="Mentored junior developers, conducted rigorous code reviews, and championed CI/CD automation pipelines via GitHub Actions." data-th="ให้คำปรึกษานักพัฒนารุ่นน้อง ตรวจสอบโค้ดอย่างเข้มงวด และผลักดันระบบอัตโนมัติ CI/CD ผ่าน GitHub Actions">Mentored junior developers, conducted rigorous code reviews, and championed CI/CD automation pipelines via GitHub Actions.</li>
+                        </ul>
                     </div>
-                </section>
 
-                <!-- Languages -->
-                <section>
-                    <h2 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3 flex items-center gap-2 border-b-2 border-indigo-500 pb-2">
-                        <i class="fa-solid fa-language text-indigo-600 dark:text-indigo-400"></i>
-                        <span class="data-i18n" data-en="Languages" data-th="ภาษา">Languages</span>
-                    </h2>
-                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                        <li class="flex justify-between items-center">
-                            <span class="data-i18n" data-en="Thai (Native)" data-th="ไทย (ภาษาแม่)">Thai (Native)</span>
-                            <span class="text-xs bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded">C2</span>
-                        </li>
-                        <li class="flex justify-between items-center">
-                            <span class="data-i18n" data-en="English (Professional)" data-th="อังกฤษ (ระดับทำงาน)">English (Professional)</span>
-                            <span class="text-xs bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded">C1 (IELTS 7.5)</span>
-                        </li>
-                    </ul>
-                </section>
-
-            </div>
-
-            <!-- Right Column (Experience & Projects) -->
-            <div class="lg:col-span-2 space-y-8">
-                
-                <!-- Work Experience -->
-                <section>
-                    <h2 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2 border-b-2 border-indigo-500 pb-2">
-                        <i class="fa-solid fa-briefcase text-indigo-600 dark:text-indigo-400"></i>
-                        <span class="data-i18n" data-en="Work Experience" data-th="ประสบการณ์ทำงาน">Work Experience</span>
-                    </h2>
-
-                    <div class="space-y-6">
-                        
-                        <!-- Job 1 -->
-                        <div class="relative pl-6 border-l-2 border-indigo-200 dark:border-indigo-900">
-                            <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-indigo-600 dark:bg-indigo-400"></div>
-                            
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
-                                <h3 class="font-bold text-base text-slate-900 dark:text-white">
-                                    <span class="data-i18n" data-en="Senior Software Engineer" data-th="วิศวกรซอฟต์แวร์อาวุโส">Senior Software Engineer</span>
-                                </h3>
-                                <span class="text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 px-2.5 py-1 rounded-full w-fit mt-1 sm:mt-0">
-                                    <span class="data-i18n" data-en="2022 - Present" data-th="2565 - ปัจจุบัน">2022 - Present</span>
-                                </span>
-                            </div>
-                            <p class="text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-2">Tech Innovators Co., Ltd. • Bangkok</p>
-                            
-                            <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 text-sm space-y-1.5 leading-relaxed">
-                                <li>
-                                    <span class="data-i18n" 
-                                          data-en="Led a cross-functional engineering team of 6 developers to architect and launch a scalable SaaS microservices platform handling 2M+ monthly active requests."
-                                          data-th="นำทีมวิศวกรข้ามสายงาน 6 คนในการออกแบบและเปิดตัวแพลตฟอร์ม SaaS ไมโครเซอวิสที่รองรับผู้ใช้งานกว่า 2 ล้านคำขอต่อเดือน">
-                                        Led a cross-functional engineering team of 6 developers to architect and launch a scalable SaaS microservices platform handling 2M+ monthly active requests.
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="data-i18n" 
-                                          data-en="Optimized frontend bundle size and query performance, resulting in a 40% reduction in page load speed and improved Core Web Vitals."
-                                          data-th="ปรับปรุงขนาดหน้าเว็บและประสิทธิภาพฐานข้อมูล ส่งผลให้ความเร็วในการโหลดหน้าเว็บเร็วขึ้น 40%">
-                                        Optimized frontend bundle size and query performance, resulting in a 40% reduction in page load speed and improved Core Web Vitals.
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="data-i18n" 
-                                          data-en="Implemented automated CI/CD pipelines utilizing GitHub Actions, Docker, and AWS ECS, cutting deployment time from hours to minutes."
-                                          data-th="ติดตั้งระบบ CI/CD อัตโนมัติด้วย GitHub Actions, Docker และ AWS ECS ลดเวลาการติดตั้งระบบลงอย่างมาก">
-                                        Implemented automated CI/CD pipelines utilizing GitHub Actions, Docker, and AWS ECS, cutting deployment time from hours to minutes.
-                                    </span>
-                                </li>
-                            </ul>
+                    <!-- Job 2 -->
+                    <div class="relative pl-6 border-l-2 border-slate-300 dark:border-slate-700">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 border-4 border-white dark:border-slate-800"></div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                            <h3 class="text-base font-bold text-slate-900 dark:text-slate-100">
+                                <span data-en="Full-Stack Developer" data-th="ฟูลสแต็กเอ็นจิเนียร์">Full-Stack Developer</span>
+                            </h3>
+                            <span class="text-xs font-semibold px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full w-fit mt-1 sm:mt-0">2021 - 2023</span>
                         </div>
-
-                        <!-- Job 2 -->
-                        <div class="relative pl-6 border-l-2 border-indigo-200 dark:border-indigo-900">
-                            <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-indigo-600 dark:bg-indigo-400"></div>
-                            
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
-                                <h3 class="font-bold text-base text-slate-900 dark:text-white">
-                                    <span class="data-i18n" data-en="Full-Stack Developer" data-th="นักพัฒนาฟูลสแต็ก">Full-Stack Developer</span>
-                                </h3>
-                                <span class="text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 px-2.5 py-1 rounded-full w-fit mt-1 sm:mt-0">
-                                    <span class="data-i18n" data-en="2020 - 2022" data-th="2563 - 2565">2020 - 2022</span>
-                                </span>
-                            </div>
-                            <p class="text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-2">Digital Solution Hub • Bangkok</p>
-                            
-                            <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 text-sm space-y-1.5 leading-relaxed">
-                                <li>
-                                    <span class="data-i18n" 
-                                          data-en="Developed responsive e-commerce web apps using React, Node.js, and PostgreSQL, providing seamless user checkout workflows."
-                                          data-th="พัฒนาเว็บแอปพลิเคชันอีคอมเมิร์ซแบบ Responsive ด้วย React, Node.js และ PostgreSQL รองรับขั้นตอนการชำระเงินที่ราบรื่น">
-                                        Developed responsive e-commerce web apps using React, Node.js, and PostgreSQL, providing seamless user checkout workflows.
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="data-i18n" 
-                                          data-en="Integrated third-party payment gateways (Stripe, PromptPay API) and ensured high standard security compliance."
-                                          data-th="เชื่อมต่อระบบชำระเงินบุคคลที่สาม (Stripe, PromptPay API) พร้อมรักษามาตรฐานความปลอดภัยสูงสุด">
-                                        Integrated third-party payment gateways (Stripe, PromptPay API) and ensured high standard security compliance.
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
-
+                        <p class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3">DigitalCraft Studio • Bangkok</p>
+                        <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1.5 leading-relaxed">
+                            <li data-en="Developed RESTful APIs and integrated secure third-party payment gateways (Stripe, Omise) for e-commerce clients." data-th="พัฒนา RESTful API และเชื่อมต่อระบบชำระเงินบุคคลที่สามที่ปลอดภัย (Stripe, Omise) สำหรับลูกค้าอีคอมเมิร์ซ">Developed RESTful APIs and integrated secure third-party payment gateways (Stripe, Omise) for e-commerce clients.</li>
+                            <li data-en="Collaborated with UI/UX designers to implement pixel-perfect, accessible, and high-converting web interfaces." data-th="ร่วมมือกับดีไซเนอร์ UI/UX เพื่อพัฒนาอินเทอร์เฟซเว็บที่สวยงาม ตรงตามต้นแบบ เข้าถึงง่าย และเพิ่มอัตราการแปลงสูง">Collaborated with UI/UX designers to implement pixel-perfect, accessible, and high-converting web interfaces.</li>
+                            <li data-en="Optimized PostgreSQL queries and database indexing, improving data retrieval speeds by 40%." data-th="ปรับแต่งคำสั่งค้นหา PostgreSQL และดัชนีฐานข้อมูล ปรับปรุงความเร็วในการดึงข้อมูลให้ดีขึ้น 40%">Optimized PostgreSQL queries and database indexing, improving data retrieval speeds by 40%.</li>
+                        </ul>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <!-- Projects Section -->
-                <section>
-                    <h2 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2 border-b-2 border-indigo-500 pb-2">
-                        <i class="fa-solid fa-code-branch text-indigo-600 dark:text-indigo-400"></i>
-                        <span class="data-i18n" data-en="Featured Projects" data-th="โครงการเด่น">Featured Projects</span>
-                    </h2>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        
-                        <!-- Project 1 -->
-                        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700/80 bg-slate-50/50 dark:bg-slate-900/40 hover:border-indigo-500 transition">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="font-bold text-slate-900 dark:text-white text-sm">DevPulse Analytics</h3>
-                                <a href="#" class="text-indigo-600 dark:text-indigo-400 text-xs hover:underline flex items-center gap-1">
+            <!-- Projects Section -->
+            <section>
+                <h2 class="text-lg font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-6 flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 pb-2">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span data-en="Featured Projects" data-th="โปรเจกต์เด่น">Featured Projects</span>
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Project 1 -->
+                    <div class="bg-slate-50 dark:bg-slate-700/50 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                                    <i class="fa-solid fa-cart-shopping text-indigo-500"></i> DevStore E-Commerce Platform
+                                </h3>
+                                <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline text-xs flex items-center gap-1">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
                                 </a>
                             </div>
-                            <p class="text-slate-600 dark:text-slate-300 text-xs mb-3 leading-relaxed">
-                                <span class="data-i18n" 
-                                      data-en="Real-time developer performance metric tracker built with Next.js, Tailwind, and WebSocket."
-                                      data-th="ระบบติดตามประสิทธิภาพนักพัฒนาแบบเรียลไทม์ สร้างด้วย Next.js, Tailwind และ WebSocket">
-                                    Real-time developer performance metric tracker built with Next.js, Tailwind, and WebSocket.
-                                </span>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-4" data-en="A full-featured e-commerce system with real-time inventory management, secure checkout, and admin dashboard." data-th="ระบบอีคอมเมิร์ซแบบครบวงจร พร้อมระบบจัดการสินค้าคงคลังแบบเรียลไทม์ ชำระเงินปลอดภัย และแดชบอร์ดผู้ดูแลระบบ">
+                                A full-featured e-commerce system with real-time inventory management, secure checkout, and admin dashboard.
                             </p>
-                            <div class="flex flex-wrap gap-1">
-                                <span class="text-[10px] bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 px-2 py-0.5 rounded">Next.js</span>
-                                <span class="text-[10px] bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 px-2 py-0.5 rounded">WebSocket</span>
-                            </div>
                         </div>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="px-2 py-0.5 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 text-[11px] font-medium rounded-md">React</span>
+                            <span class="px-2 py-0.5 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 text-[11px] font-medium rounded-md">Node.js</span>
+                            <span class="px-2 py-0.5 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 text-[11px] font-medium rounded-md">MongoDB</span>
+                        </div>
+                    </div>
 
-                        <!-- Project 2 -->
-                        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700/80 bg-slate-50/50 dark:bg-slate-900/40 hover:border-indigo-500 transition">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="font-bold text-slate-900 dark:text-white text-sm">CloudFlow CLI</h3>
-                                <a href="#" class="text-indigo-600 dark:text-indigo-400 text-xs hover:underline flex items-center gap-1">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> GitHub
+                    <!-- Project 2 -->
+                    <div class="bg-slate-50 dark:bg-slate-700/50 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                                    <i class="fa-solid fa-chart-line text-indigo-500"></i> TaskPulse Project Manager
+                                </h3>
+                                <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline text-xs flex items-center gap-1">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
                                 </a>
                             </div>
-                            <p class="text-slate-600 dark:text-slate-300 text-xs mb-3 leading-relaxed">
-                                <span class="data-i18n" 
-                                      data-en="Open-source CLI tool to streamline multi-cloud server deployments with encrypted credential management."
-                                      data-th="เครื่องมือ CLI แบบ Open-source ช่วยอำนวยความสะดวกการกระจายเซิร์ฟเวอร์บนคลาวด์หลากหลายเจ้า">
-                                    Open-source CLI tool to streamline multi-cloud server deployments with encrypted credential management.
-                                </span>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-4" data-en="Agile project management web tool equipped with kanban boards, live team chat via WebSockets, and performance metrics." data-th="เครื่องมือจัดการโปรเจกต์แบบ Agile พร้อมกระดาน Kanban แชททีมสดผ่าน WebSockets และตัวชี้วัดประสิทธิภาพ">
+                                Agile project management web tool equipped with kanban boards, live team chat via WebSockets, and performance metrics.
                             </p>
-                            <div class="flex flex-wrap gap-1">
-                                <span class="text-[10px] bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-300 px-2 py-0.5 rounded">Node.js</span>
-                                <span class="text-[10px] bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-300 px-2 py-0.5 rounded">TypeScript</span>
-                            </div>
                         </div>
-
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="px-2 py-0.5 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 text-[11px] font-medium rounded-md">Next.js</span>
+                            <span class="px-2 py-0.5 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 text-[11px] font-medium rounded-md">TypeScript</span>
+                            <span class="px-2 py-0.5 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 text-[11px] font-medium rounded-md">PostgreSQL</span>
+                        </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-            </div>
+            <!-- Education & Certifications -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div>
+                    <h2 class="text-lg font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-4 flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 pb-2">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span data-en="Education" data-th="การศึกษา">Education</span>
+                    </h2>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-slate-100 text-sm" data-en="B.Sc. in Computer Science" data-th="วิทยาศาสตรบัณฑิต สาขาวิทยาการคอมพิวเตอร์">B.Sc. in Computer Science</h3>
+                            <p class="text-xs text-indigo-600 dark:text-indigo-400 font-medium">King Mongkut's University of Technology Thonburi • 2017 - 2021</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-en="First Class Honors, GPA 3.65 • President of Computer Science Club" data-th="เกียรตินิยมอันดับ 1, เกรดเฉลี่ย 3.65 • ประธานชมรมวิทยาการคอมพิวเตอร์">First Class Honors, GPA 3.65</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-lg font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-4 flex items-center gap-2 border-b border-slate-200 dark:border-slate-700 pb-2">
+                        <i class="fa-solid fa-award"></i>
+                        <span data-en="Certifications" data-th="ใบประกาศนียบัตร">Certifications</span>
+                    </h2>
+                    <ul class="space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-certificate text-indigo-500 mt-0.5"></i>
+                            <div>
+                                <strong class="text-slate-900 dark:text-slate-100">AWS Certified Solutions Architect – Associate</strong>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Amazon Web Services (2023)</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-certificate text-indigo-500 mt-0.5"></i>
+                            <div>
+                                <strong class="text-slate-900 dark:text-slate-100">Professional Scrum Master I (PSM I)</strong>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Scrum.org (2022)</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
 
         </div>
 
-        <!-- Footer Note / Copyright -->
-        <footer class="bg-slate-50 dark:bg-slate-900/60 px-8 py-4 border-t border-slate-200 dark:border-slate-700 text-center text-xs text-slate-500">
-            <span class="data-i18n" data-en="Designed for Professional Software Engineers • Bilingual Template" data-th="ออกแบบสำหรับวิศวกรซอฟต์แวร์มืออาชีพ • เทมเพลตสองภาษา">Designed for Professional Software Engineers • Bilingual Template</span>
+        <!-- Footer -->
+        <footer class="bg-slate-50 dark:bg-slate-900/50 p-6 text-center text-xs text-slate-400 border-t border-slate-200 dark:border-slate-700">
+            <p>© 2026 ณัฐวุฒิ จีระโร (Nattawut Jeeraro) — <span data-en="All Rights Reserved." data-th="สงวนลิขสิทธิ์">All Rights Reserved.</span></p>
         </footer>
 
     </main>
 
-    <!-- Scripts for Theme, Language, & Photo Upload -->
+    <!-- Script Logic for Bilingual Toggle, Theme Mode, and Photo Upload -->
     <script>
-        // Profile Image Uploader
-        function loadProfileImage(event) {
-            const reader = new FileReader();
-            reader.onload = function(){
-                const output = document.getElementById('profile-img');
-                output.src = reader.result;
-            };
-            if(event.target.files[0]) {
-                reader.readAsDataURL(event.target.files[0]);
-            }
+        let currentLang = 'th'; // Default to Thai as requested
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'th' ? 'en' : 'th';
+            document.documentElement.setAttribute('lang', currentLang);
+
+            // Update button label
+            document.getElementById('langText').innerText = currentLang === 'th' ? 'EN / TH' : 'TH / EN';
+
+            // Toggle all translatable elements
+            const elements = document.querySelectorAll('[data-en]');
+            elements.forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = text;
+                    } else {
+                        el.innerText = text;
+                    }
+                }
+            });
         }
 
-        // Dark / Light Theme Toggle
         function toggleTheme() {
             const html = document.documentElement;
-            const themeIcon = document.getElementById('theme-icon');
+            const themeIcon = document.getElementById('themeIcon');
+            
             if (html.classList.contains('dark')) {
                 html.classList.remove('dark');
                 themeIcon.className = 'fa-solid fa-moon';
@@ -403,39 +366,33 @@
             }
         }
 
-        // Initialize Theme from localStorage
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            document.getElementById('theme-icon').className = 'fa-solid fa-sun';
-        } else {
-            document.documentElement.classList.remove('dark');
-            document.getElementById('theme-icon').className = 'fa-solid fa-moon';
-        }
+        // Check user system preference or stored theme on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('themeIcon');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                if (themeIcon) themeIcon.className = 'fa-solid fa-sun';
+            } else {
+                document.documentElement.classList.remove('dark');
+                if (themeIcon) themeIcon.className = 'fa-solid fa-moon';
+            }
 
-        // Bilingual Language Switcher (EN / TH)
-        let currentLang = localStorage.getItem('lang') || 'en';
-
-        function updateLanguageDisplay() {
-            const elements = document.querySelectorAll('.data-i18n');
-            elements.forEach(el => {
-                const text = el.getAttribute(`data-${currentLang}`);
-                if (text) {
-                    el.textContent = text;
-                }
-            });
-            document.getElementById('lang-label').textContent = currentLang === 'en' ? 'TH / EN' : 'EN / TH';
-            localStorage.setItem('lang', currentLang);
-        }
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'th' : 'en';
-            updateLanguageDisplay();
-        }
-
-        // Run on load
-        document.addEventListener('DOMContentLoaded', () => {
-            updateLanguageDisplay();
+            // Apply initial language state (Thai)
+            toggleLanguage();
         });
+
+        // Profile Photo Upload Preview
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profileImg').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
     </script>
 </body>
 </html>

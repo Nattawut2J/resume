@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="th" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Bilingual Developer Resume</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Sarabun', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Inter and Sarabun for Thai support -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Print specific styles -->
+    <style>
+        body {
+            font-family: 'Inter', 'Sarabun', sans-serif;
+        }
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-shadow-none {
+                box-shadow: none !important;
+                border: none !important;
+            }
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
+            .resume-container {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-300 min-h-screen pb-16">
+
+    <!-- Control Toolbar (No Print) -->
+    <div class="no-print sticky top-0 z-50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 shadow-sm py-3 px-4 sm:px-8 mb-6">
+        <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <div class="bg-indigo-600 text-white p-2 rounded-lg font-bold text-sm flex items-center justify-center w-8 h-8">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm sm:text-base" data-i18n="toolbar_title">DevResume Builder</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="toolbar_subtitle">Interactive Software Engineer Resume</p>
+                </div>
+            </div>
+
+            <div class="flex items-center flex-wrap gap-2 sm:gap-3">
+                <!-- Language Switcher -->
+                <div class="bg-slate-200 dark:bg-slate-700 p-1 rounded-lg flex items-center text-xs font-medium">
+                    <button id="lang-th" onclick="switchLanguage('th')" class="px-3 py-1.5 rounded-md transition-all bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400">ไทย</button>
+                    <button id="lang-en" onclick="switchLanguage('en')" class="px-3 py-1.5 rounded-md transition-all text-slate-600 dark:text-slate-300">English</button>
+                </div>
+
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="p-2.5 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors text-slate-700 dark:text-slate-200" title="Toggle Theme">
+                    <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
+                </button>
+
+                <!-- Print / Save PDF Button -->
+                <button onclick="window.print()" class="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold shadow-md transition-all transform active:scale-95">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span data-i18n="btn_print">พิมพ์ / บันทึก PDF</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Container -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="resume-container bg-white dark:bg-slate-800 shadow-xl rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 print-shadow-none transition-colors duration-300">
+            
+            <!-- Header Section -->
+            <header class="bg-gradient-to-r from-indigo-900 via-slate-900 to-indigo-950 text-white p-6 sm:p-10 relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none text-9xl">
+                    <i class="fa-solid fa-terminal"></i>
+                </div>
+                
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10">
+                    <div>
+                        <div class="inline-block bg-indigo-500/30 text-indigo-300 text-xs font-semibold px-3 py-1 rounded-full mb-3 border border-indigo-400/30">
+                            <span data-i18n="header_badge">Full-Stack Software Engineer</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-1">
+                            <span data-i18n="name">ศิวกร พัฒนากุล</span> <span class="text-indigo-400 font-light text-2xl sm:text-3xl">(Siwakorn Pattanakul)</span>
+                        </h1>
+                        <p class="text-slate-300 text-sm sm:text-base font-light max-w-xl mt-2" data-i18n="header_summary">
+                            Software engineer with 5+ years of experience designing scalable web architectures, microservices, and high-performance cloud applications.
+                        </p>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="flex flex-col space-y-2 text-xs sm:text-sm text-slate-300 bg-slate-800/50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-700/60 backdrop-blur-sm w-full md:w-auto">
+                        <a href="mailto:siwakorn.dev@example.com" class="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                            <i class="fa-solid fa-envelope w-4 text-indigo-400"></i>
+                            <span>siwakorn.dev@example.com</span>
+                        </a>
+                        <a href="tel:+66891234567" class="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                            <i class="fa-solid fa-phone w-4 text-indigo-400"></i>
+                            <span>+66 89 123 4567</span>
+                        </a>
+                        <a href="https://github.com" target="_blank" class="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                            <i class="fa-brands fa-github w-4 text-indigo-400"></i>
+                            <span>github.com/siwakorn-dev</span>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="flex items-center space-x-3 hover:text-indigo-400 transition-colors">
+                            <i class="fa-brands fa-linkedin w-4 text-indigo-400"></i>
+                            <span>linkedin.com/in/siwakorn-dev</span>
+                        </a>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-location-dot w-4 text-indigo-400"></i>
+                            <span data-i18n="location">กรุงเทพมหานคร, ประเทศไทย (Bangkok, Thailand)</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Body Content -->
+            <div class="p-6 sm:p-10 space-y-8">
+
+                <!-- Technical Skills Section -->
+                <section>
+                    <h2 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2 mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+                        <i class="fa-solid fa-layer-group text-indigo-600 dark:text-indigo-400"></i>
+                        <span data-i18n="sec_skills">ทักษะทางเทคนิค (Technical Skills)</span>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-slate-50 dark:bg-slate-700/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <h3 class="font-semibold text-sm text-indigo-600 dark:text-indigo-400 mb-2" data-i18n="skill_frontend">Frontend</h3>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">React.js</span>
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">Next.js</span>
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">TypeScript</span>
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">Tailwind CSS</span>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <h3 class="font-semibold text-sm text-indigo-600 dark:text-indigo-400 mb-2" data-i18n="skill_backend">Backend</h3>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">Node.js</span>
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">Python (FastAPI)</span>
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">Go</span>
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">GraphQL & REST</span>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <h3 class="font-semibold text-sm text-indigo-600 dark:text-indigo-400 mb-2" data-i18n="skill_database">Database & Cache</h3>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">PostgreSQL</span>
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">MongoDB</span>
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">Redis</span>
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">Elasticsearch</span>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <h3 class="font-semibold text-sm text-indigo-600 dark:text-indigo-400 mb-2" data-i18n="skill_devops">DevOps & Cloud</h3>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">Docker</span>
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">Kubernetes</span>
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">AWS</span>
+                                <span class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-600 font-medium">CI/CD (GitHub Actions)</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Work Experience Section -->
+                <section>
+                    <h2 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2 mb-6 border-b border-slate-200 dark:border-slate-700 pb-2">
+                        <i class="fa-solid fa-briefcase text-indigo-600 dark:text-indigo-400"></i>
+                        <span data-i18n="sec_experience">ประสบการณ์การทำงาน (Work Experience)</span>
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Job 1 -->
+                        <div class="relative pl-6 sm:pl-8 border-l-2 border-indigo-500/40 space-y-2">
+                            <div class="absolute -left-[9px] top-0.5 w-4 h-4 rounded-full bg-indigo-600 border-4 border-white dark:border-slate-800"></div>
+                            
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <h3 class="text-base font-bold text-slate-900 dark:text-white">
+                                    <span data-i18n="job1_title">Senior Full-Stack Engineer</span> 
+                                    <span class="text-indigo-600 dark:text-indigo-400">@ Tech Innovate Co., Ltd.</span>
+                                </h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 rounded-md w-max" data-i18n="job1_date">2022 - Present (ปัจจุบัน)</span>
+                            </div>
+                            
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="job1_desc">
+                                Led a cross-functional team of 6 engineers to build scalable cloud microservices. Reduced server latency by 45% using Redis caching layers and optimizing PostgreSQL query plans.
+                            </p>
+                            
+                            <ul class="list-disc list-inside text-xs text-slate-600 dark:text-slate-300 space-y-1 pt-1">
+                                <li data-i18n="job1_bullet1">Designed and implemented high-throughput RESTful & GraphQL APIs serving over 2M active users monthly.</li>
+                                <li data-i18n="job1_bullet2">Migrated legacy monolith infrastructure to containerized Docker & Kubernetes clusters on AWS, cutting cloud operational costs by 30%.</li>
+                                <li data-i18n="job1_bullet3">Mentored junior developers, introduced automated code review pipelines, and enforced high code quality standards.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Job 2 -->
+                        <div class="relative pl-6 sm:pl-8 border-l-2 border-indigo-500/40 space-y-2">
+                            <div class="absolute -left-[9px] top-0.5 w-4 h-4 rounded-full bg-indigo-600 border-4 border-white dark:border-slate-800"></div>
+                            
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <h3 class="text-base font-bold text-slate-900 dark:text-white">
+                                    <span data-i18n="job2_title">Software Developer (Frontend / Backend)</span> 
+                                    <span class="text-indigo-600 dark:text-indigo-400">@ Digital Solution Lab</span>
+                                </h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 rounded-md w-max" data-i18n="job2_date">2020 - 2022</span>
+                            </div>
+                            
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="job2_desc">
+                                Developed dynamic single-page web applications and enterprise internal management portals using React.js, TypeScript, and Node.js.
+                            </p>
+                            
+                            <ul class="list-disc list-inside text-xs text-slate-600 dark:text-slate-300 space-y-1 pt-1">
+                                <li data-i18n="job2_bullet1">Built responsive, high-performance UI dashboards utilizing Tailwind CSS and Redux Toolkit.</li>
+                                <li data-i18n="job2_bullet2">Integrated secure third-party payment gateways (Stripe, Omise) and authentication services (OAuth 2.0 / JWT).</li>
+                                <li data-i18n="job2_bullet3">Collaborated closely with UX/UI designers to implement pixel-perfection designs and intuitive user experiences.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects & Education Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-2">
+                    
+                    <!-- Projects Section -->
+                    <section>
+                        <h2 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2 mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+                            <i class="fa-solid fa-code-branch text-indigo-600 dark:text-indigo-400"></i>
+                            <span data-i18n="sec_projects">โปรเจกต์เด่น (Featured Projects)</span>
+                        </h2>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h3 class="font-bold text-sm text-slate-900 dark:text-white" data-i18n="proj1_name">E-Commerce Microservices Engine</h3>
+                                    <span class="text-[10px] bg-indigo-100 dark:bg-indigo-900/60 text-indigo-600 dark:text-indigo-300 px-2 py-0.5 rounded font-medium">Go / Node.js / Docker</span>
+                                </div>
+                                <p class="text-xs text-slate-600 dark:text-slate-300 mb-2" data-i18n="proj1_desc">
+                                    A resilient e-commerce backend platform handling inventory sync, checkout processing, and real-time order tracking.
+                                </p>
+                                <a href="https://github.com" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 font-semibold hover:underline inline-flex items-center gap-1">
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> <span data-i18n="view_source">ดูซอร์สโค้ด (Source Code)</span>
+                                </a>
+                            </div>
+
+                            <div class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h3 class="font-bold text-sm text-slate-900 dark:text-white" data-i18n="proj2_name">AI Prompt Dashboard & Analytics</h3>
+                                    <span class="text-[10px] bg-indigo-100 dark:bg-indigo-900/60 text-indigo-600 dark:text-indigo-300 px-2 py-0.5 rounded font-medium">Next.js / Python / FastAPI</span>
+                                </div>
+                                <p class="text-xs text-slate-600 dark:text-slate-300 mb-2" data-i18n="proj2_desc">
+                                    Full-stack web app designed to test, manage, and monitor Large Language Model API responses with token analytics.
+                                </p>
+                                <a href="https://github.com" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 font-semibold hover:underline inline-flex items-center gap-1">
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> <span data-i18n="view_source">ดูซอร์สโค้ด (Source Code)</span>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Education & Certifications -->
+                    <section>
+                        <h2 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2 mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+                            <i class="fa-solid fa-graduation-cap text-indigo-600 dark:text-indigo-400"></i>
+                            <span data-i18n="sec_education">การศึกษา & ใบรับรอง (Education & Certs)</span>
+                        </h2>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <h3 class="font-bold text-sm text-slate-900 dark:text-white" data-i18n="edu_degree">Bachelor of Science in Computer Engineering</h3>
+                                <p class="text-xs text-indigo-600 dark:text-indigo-400 font-medium" data-i18n="edu_uni">King Mongkut's University of Technology Thonburi (KMUTT)</p>
+                                <span class="text-[11px] text-slate-500 dark:text-slate-400" data-i18n="edu_date">2016 - 2020 (GPA: 3.52)</span>
+                            </div>
+
+                            <div class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <h3 class="font-bold text-sm text-slate-900 dark:text-white" data-i18n="cert_title">AWS Certified Solutions Architect – Associate</h3>
+                                <p class="text-xs text-indigo-600 dark:text-indigo-400 font-medium" data-i18n="cert_issuer">Amazon Web Services (AWS)</p>
+                                <span class="text-[11px] text-slate-500 dark:text-slate-400" data-i18n="cert_date">Issued 2023 · Valid until 2026</span>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Dictionary for Thai and English translations
+        const translations = {
+            th: {
+                toolbar_title: "DevResume Builder",
+                toolbar_subtitle: "เรซูเม่ซอฟต์แวร์สตรีมมิ่ง/เว็บแบบโต้ตอบ",
+                btn_print: "พิมพ์ / บันทึก PDF",
+                header_badge: "วิศวกรซอฟต์แวร์ฟูลสแตท (Full-Stack Software Engineer)",
+                name: "ศิวกร พัฒนากุล",
+                header_summary: "วิศวกรซอฟต์แวร์ที่มีประสบการณ์มากกว่า 5 ปีในการออกแบบสถาปัตยกรรมเว็บแบบ Scalable, Microservices และระบบ Cloud ที่มีประสิทธิภาพสูง",
+                location: "กรุงเทพมหานคร, ประเทศไทย (Bangkok, Thailand)",
+                sec_skills: "ทักษะทางเทคนิค (Technical Skills)",
+                skill_frontend: "ส่วนหน้า (Frontend)",
+                skill_backend: "ส่วนหลัง (Backend)",
+                skill_database: "ฐานข้อมูลและแคช (Database & Cache)",
+                skill_devops: "เดฟออปส์และคลาวด์ (DevOps & Cloud)",
+                sec_experience: "ประสบการณ์การทำงาน (Work Experience)",
+                job1_title: "วิศวกรฟูลสแตทอาวุโส (Senior Full-Stack Engineer)",
+                job1_date: "พ.ศ. 2565 - ปัจจุบัน (2022 - Present)",
+                job1_desc: "นำทีมวิศวกร 6 คนในการสร้างระบบ Microservices บนคลาวด์ ลดความหน่วงของเซิร์ฟเวอร์ลง 45% ด้วย Redis caching และการปรับปรุง PostgreSQL query plans",
+                job1_bullet1: "ออกแบบและพัฒนา RESTful & GraphQL APIs ที่รองรับผู้ใช้งานมากกว่า 2 ล้านคนต่อเดือน",
+                job1_bullet2: "ย้ายโครงสร้างพื้นฐานเดิมสู่ Docker และ Kubernetes บน AWS ช่วยลดต้นทุนคลาวด์ลง 30%",
+                job1_bullet3: "ให้คำปรึกษาและสอนงานนักพัฒนารุ่นน้อง พร้อมวางระบบตรวจสอบโค้ดอัตโนมัติ (Automated Code Review)",
+                job2_title: "นักพัฒนาซอฟต์แวร์ (Software Developer)",
+                job2_date: "พ.ศ. 2563 - 2565 (2020 - 2022)",
+                job2_desc: "พัฒนาเว็บแอปพลิเคชัน Single-Page และระบบภายในองค์กรด้วย React.js, TypeScript และ Node.js",
+                job2_bullet1: "สร้างแดชบอร์ด UI ที่ตอบสนองทุกหน้าจอด้วย Tailwind CSS และ Redux Toolkit",
+                job2_bullet2: "เชื่อมต่อระบบชำระเงินที่ปลอดภัย (Stripe, Omise) และระบบยืนยันตัวตน (OAuth 2.0 / JWT)",
+                job2_bullet3: "ทำงานร่วมกับทีม UX/UI เพื่อส่งมอบงานดีไซน์ที่สวยงามแม่นยำและใช้งานง่าย",
+                sec_projects: "โปรเจกต์เด่น (Featured Projects)",
+                proj1_name: "ระบบอีคอมเมิร์ซไมโครเซอร์วิส (E-Commerce Microservices Engine)",
+                proj1_desc: "ระบบหลังบ้านอีคอมเมิร์ซที่รองรับการซิงค์สต็อกสินค้า การชำระเงิน และการติดตามสถานะคำสั่งซื้อแบบเรียลไทม์",
+                view_source: "ดูซอร์สโค้ด (Source Code)",
+                proj2_name: "แดชบอร์ดจัดการและวิเคราะห์ AI Prompts",
+                proj2_desc: "เว็บแอปพลิเคชันสำหรับทดสอบ จัดการ และติดตามผลลัพธ์ของ Large Language Model พร้อมวิเคราะห์ Token",
+                sec_education: "การศึกษา & ใบรับรอง (Education & Certs)",
+                edu_degree: "ปริญญาตรี วิศวกรรมศาสตรบัณฑิต (วิศวกรรมคอมพิวเตอร์)",
+                edu_uni: "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี (มจธ.)",
+                edu_date: "พ.ศ. 2559 - 2563 (เกรดเฉลี่ย: 3.52)",
+                cert_title: "AWS Certified Solutions Architect – Associate",
+                cert_issuer: "Amazon Web Services (AWS)",
+                cert_date: "ออกให้เมื่อปี 2023 · ใช้ได้ถึงปี 2026"
+            },
+            en: {
+                toolbar_title: "DevResume Builder",
+                toolbar_subtitle: "Interactive Software Engineer Resume",
+                btn_print: "Print / Save PDF",
+                header_badge: "Full-Stack Software Engineer",
+                name: "Siwakorn Pattanakul",
+                header_summary: "Software engineer with 5+ years of experience designing scalable web architectures, microservices, and high-performance cloud applications.",
+                location: "Bangkok, Thailand",
+                sec_skills: "Technical Skills",
+                skill_frontend: "Frontend",
+                skill_backend: "Backend",
+                skill_database: "Database & Cache",
+                skill_devops: "DevOps & Cloud",
+                sec_experience: "Work Experience",
+                job1_title: "Senior Full-Stack Engineer",
+                job1_date: "2022 - Present",
+                job1_desc: "Led a cross-functional team of 6 engineers to build scalable cloud microservices. Reduced server latency by 45% using Redis caching layers and optimizing PostgreSQL query plans.",
+                job1_bullet1: "Designed and implemented high-throughput RESTful & GraphQL APIs serving over 2M active users monthly.",
+                job1_bullet2: "Migrated legacy monolith infrastructure to containerized Docker & Kubernetes clusters on AWS, cutting cloud operational costs by 30%.",
+                job1_bullet3: "Mentored junior developers, introduced automated code review pipelines, and enforced high code quality standards.",
+                job2_title: "Software Developer (Frontend / Backend)",
+                job2_date: "2020 - 2022",
+                job2_desc: "Developed dynamic single-page web applications and enterprise internal management portals using React.js, TypeScript, and Node.js.",
+                job2_bullet1: "Built responsive, high-performance UI dashboards utilizing Tailwind CSS and Redux Toolkit.",
+                job2_bullet2: "Integrated secure third-party payment gateways (Stripe, Omise) and authentication services (OAuth 2.0 / JWT).",
+                job2_bullet3: "Collaborated closely with UX/UI designers to implement pixel-perfection designs and intuitive user experiences.",
+                sec_projects: "Featured Projects",
+                proj1_name: "E-Commerce Microservices Engine",
+                proj1_desc: "A resilient e-commerce backend platform handling inventory sync, checkout processing, and real-time order tracking.",
+                view_source: "Source Code",
+                proj2_name: "AI Prompt Dashboard & Analytics",
+                proj2_desc: "Full-stack web app designed to test, manage, and monitor Large Language Model API responses with token analytics.",
+                sec_education: "Education & Certifications",
+                edu_degree: "Bachelor of Science in Computer Engineering",
+                edu_uni: "King Mongkut's University of Technology Thonburi (KMUTT)",
+                edu_date: "2016 - 2020 (GPA: 3.52)",
+                cert_title: "AWS Certified Solutions Architect – Associate",
+                cert_issuer: "Amazon Web Services (AWS)",
+                cert_date: "Issued 2023 · Valid until 2026"
+            }
+        };
+
+        let currentLang = 'th';
+
+        // Switch Language Function
+        function switchLanguage(lang) {
+            currentLang = lang;
+            const elements = document.querySelectorAll('[data-i18n]');
+            
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update html lang attribute
+            document.documentElement.setAttribute('lang', lang);
+
+            // Update button active states
+            const thBtn = document.getElementById('lang-th');
+            const enBtn = document.getElementById('lang-en');
+
+            if (lang === 'th') {
+                thBtn.className = "px-3 py-1.5 rounded-md transition-all bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400";
+                enBtn.className = "px-3 py-1.5 rounded-md transition-all text-slate-600 dark:text-slate-300";
+            } else {
+                enBtn.className = "px-3 py-1.5 rounded-md transition-all bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400";
+                thBtn.className = "px-3 py-1.5 rounded-md transition-all text-slate-600 dark:text-slate-300";
+            }
+        }
+
+        // Toggle Dark/Light Theme Function
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeIcon.className = "fa-solid fa-moon text-sm";
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                themeIcon.className = "fa-solid fa-sun text-sm text-amber-400";
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize Theme from localStorage if available
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('theme-icon');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+                themeIcon.className = "fa-solid fa-sun text-sm text-amber-400";
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.className = "fa-solid fa-moon text-sm";
+            }
+        });
+    </script>
+</body>
+</html>
